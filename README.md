@@ -4,10 +4,10 @@ The Credit Card Financial Dashboard is a data analysis project focused on unders
 
 ## Problem Statement
 The project aims to analyze and visualize credit card transaction data to answer key questions:
-Which expenditure types contribute the most to total revenue?
-How do customer demographics like age, income, and job type impact credit card usage?
-Which card categories yield the highest transaction volumes and revenue?
-How do transaction trends vary over time and across different regions?
+- Which expenditure types contribute the most to total revenue?
+- How do customer demographics like age, income, and job type impact credit card usage?
+- Which card categories yield the highest transaction volumes and revenue?
+- How do transaction trends vary over time and across different regions?
 
 ## Data Sources and Workflow
 ### Data Sources
