@@ -71,9 +71,9 @@ Income_group = SWITCH(
   
 ### 2. Credit Card Customer Report:
 #### Key Metrics:
-Total Income: 588M
-Total Interest Earned: 7.98M
-Customer Satisfaction Score (CSS): 3.19
+- Total Income: 588M
+- Total Interest Earned: 7.98M
+- Customer Satisfaction Score (CSS): 3.19
 
 #### Visuals:
 - Revenue by Age Group: Customers aged 40-50 contribute the highest revenue.
