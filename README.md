@@ -1,103 +1,104 @@
-# Credit_Card_Financial_Dashboard_PowerBI_Project
-
-The Credit Card Financial Dashboard is a data analysis project focused on understanding credit card transaction patterns and customer demographics. Created in Power BI, this dashboard provides insights into transaction volume, revenue distribution, customer profiles, and financial performance by expenditure types, card categories, and more. The workflow includes importing CSV files into SQL for preprocessing and leveraging DAX in Power BI for advanced calculations and categorizations.
+### Credit_Card_Transaction_and_Customer_Analysis_PowerBI_Project
+The Credit Card Transaction and Customer Analysis project offers comprehensive insights into credit card usage patterns, revenue contributions, and customer demographics. Built using Power BI, the project visualizes key financial metrics and customer behaviors, enabling data-driven decisions for optimizing credit card services and marketing strategies.
 
 ## Problem Statement
-The project aims to analyze and visualize credit card transaction data to answer key questions:
-- Which expenditure types contribute the most to total revenue?
-- How do customer demographics like age, income, and job type impact credit card usage?
-- Which card categories yield the highest transaction volumes and revenue?
-- How do transaction trends vary over time and across different regions?
+The project aims to analyze credit card transaction data to answer critical business questions:
+Which expenditure types generate the most revenue?
+How do customer demographics (e.g., age, income, job type) influence credit card usage?
+Which card categories and transaction modes contribute the highest revenue?
+What are the transaction trends across quarters and different customer segments?
 
 ## Data Sources and Workflow
-### Data Sources
-- Transaction Data: Includes transaction volume, total amounts, revenue generated, and card type.
-- Customer Demographics: Age, gender, income, marital status, job type, and education level.
-- Expenditure Data: Details spending categories like groceries, entertainment, fuel, etc.
-
-### Workflow
-1. Importing CSV to SQL:
-- Raw CSV data was imported into a SQL database.
-- Data cleaning, validation, and transformation were performed in SQL for efficient querying.
-
-2. Importing SQL Data to Power BI:
-- The cleaned data from SQL was imported into Power BI for analysis and visualization.
-- SQL queries and views were used to streamline data preparation for the dashboard.
-
-3. Implementing DAX in Power BI:
-- Custom DAX formulas were applied to calculate key metrics and create dynamic categorizations.
-
+### Data Sources:
+Transaction Data:
+- Metrics: Transaction count, total transaction amount, and revenue.
+- Transaction modes: Swipe, Chip, and Online.
+Customer Demographics:
+- Attributes: Age, gender, income, education, job type, and marital status.
+Expenditure Data:
+- Categories: Bills, Entertainment, Fuel, Groceries, Food, Travel.
+  
+### Workflow:
+Data Preparation:
+- Raw CSV files were imported into SQL.
+- Data cleaning and transformation performed in SQL.
+Power BI Integration:
+- Cleaned SQL data imported into Power BI for visualization.
+- Custom DAX formulas applied for advanced calculations and categorizations.
+- 
 ## Key DAX Formulas
-- 1. Revenue Calculation:
-DAX
+1. Revenue Calculation:
 Revenue = 'public cc_detail'[annual_fees] + 
           'public cc_detail'[total_trans_amt] + 
           'public cc_detail'[interest_earned]
-
-- 2. Week Number:
-DAX
+  
+2. Week Number Calculation:
 Week_num2 = WEEKNUM('public cc_detail'[week_start_date])
-Age Group Categorization:
 
-- 3. Age_group = SWITCH(
+3. Age Group Categorization:
+Age_group = SWITCH(
     TRUE(),
     'public cust_detail'[customer_age] < 30, "20-30",
     'public cust_detail'[customer_age] >= 30 && 'public cust_detail'[customer_age] < 40, "30-40",
     'public cust_detail'[customer_age] >= 40 && 'public cust_detail'[customer_age] < 50, "40-50",
     'public cust_detail'[customer_age] >= 50 && 'public cust_detail'[customer_age] < 60, "50-60",
     'public cust_detail'[customer_age] >= 60, "60+",
-    "unknown"
+    "Unknown"
 )
 
-- 4. Income Group Categorization:
+4. Income Group Categorization:
 Income_group = SWITCH(
     TRUE(),
     'public cust_detail'[income] < 35000, "Low_income",
     'public cust_detail'[income] >= 35000 && 'public cust_detail'[income] < 70000, "Mid_income",
     'public cust_detail'[income] >= 70000, "High_income",
-    "unknown"
+    "Unknown"
 )
 
-## Key Sections and Metrics in the Dashboard
-1. Revenue and Transaction Count by Quarter
-- Objective: Visualize total revenue and transaction count across each quarter (Q1 to Q4).
-- Insights: Identifies seasonal performance trends, helping to optimize marketing strategies.
+## Dashboard Overview
+### 1. Credit Card Transaction Report:
+Key Metrics:
+- Total Revenue: 56.52M
+- Total Transaction Amount: 46M
+- Total Interest Earned: 7.98M
+- Total Transaction Count: 667K
+  
+Visuals:
+- Revenue by Expenditure Type: Top categories include Bills, Entertainment, and Fuel.
+- Revenue by Customer Job: Businessmen and White-collar employees contribute the most revenue.
+- Quarter-wise Trends: Q4 shows the highest revenue and transaction count.
+- Revenue by Card Category: Blue cards dominate in usage and revenue generation.
+  
+### 2. Credit Card Customer Report:
+Key Metrics:
+Total Income: 588M
+Total Interest Earned: 7.98M
+Customer Satisfaction Score (CSS): 3.19
 
-2. Revenue by Expenditure Type
-- Objective: Show revenue contributions by expenditure categories such as bills, groceries, and entertainment.
-- Insights: Helps identify high-value spending categories for targeted campaigns.
-
-3. Revenue by Customer Demographics
-- Education Level: Analyzes revenue by education levels (Graduate, High School, etc.).
-- Job Type: Highlights revenue contributions by job types (Businessman, White-collar, etc.).
-- Age Group: Breaks down revenue by age ranges (20-30, 30-40, etc.) for demographic insights.
-
-4. Revenue by Card Category
-- Objective: Shows revenue contributions by card types (Blue, Silver, Gold, Platinum).
-- Insights: Identifies high-performing and premium card categories.
-
-5. Revenue by Transaction Mode
-- Objective: Displays revenue distribution by transaction modes (Swipe, Chip, Online).
-- Insights: Provides insights into customer preferences for transaction methods.
-
+Visuals:
+- Revenue by Age Group: Customers aged 40-50 contribute the highest revenue.
+- Top-5 States by Revenue: TX, NY, and CA lead in credit card revenue.
+- Revenue by Marital Status: Married customers contribute 27M, while singles contribute 22M.
+- Weekly Revenue Trends: Visualizes revenue fluctuations by gender over time.
+  
 ## Insights and Solutions
-1. Expenditure Type and Revenue Contribution
-- Insight: Categories like Bills and Entertainment contribute the most revenue.
-- Solution: Focus campaigns on high-revenue categories to drive growth.
+### Expenditure Analysis:
+- Insight: Bills and Entertainment generate the highest revenue.
+- Solution: Target high-value categories with special offers to boost usage.
 
-2. Customer Demographic Segmentation
-- Insight: High-income, educated professionals are the most engaged demographic.
-- Solution: Design tailored offers for high-income customers to enhance loyalty.
+### Customer Segmentation:
+- Insight: High-income, educated, and middle-aged (40-50) customers are the most engaged.
+- Solution: Develop tailored campaigns for these segments to enhance loyalty.
 
-3. Card Category Performance
-- Insight: Blue cards have the highest usage, while Platinum cards yield the highest revenue per transaction.
-- Solution: Promote premium cards to high-spending customers for increased profitability.
-
-4. Transaction Mode Preferences
-- Insight: Most transactions are Swipes, while Online transactions are underutilized.
-- Solution: Promote incentives for online transactions to boost digital engagement.
-
+### Card Performance:
+- Insight: Blue cards see the highest transaction volume and revenue.
+- Solution: Introduce rewards programs for Blue card users to retain their loyalty.
+  
+### Regional and Weekly Trends:
+- Insight: Revenue peaks in Q4, and states like TX, NY, and CA perform better.
+- Solution: Allocate marketing budgets strategically across high-performing regions and quarters.
+  
 ## Future Improvements
-- Additional Metrics: Add insights on customer lifetime value and churn rates.
-- Advanced Segmentation: Introduce clustering for granular customer segmentation.
-- Predictive Analytics: Implement forecasting for future revenue trends.
+- Predictive Analytics: Implement forecasting models for revenue and transaction trends.
+- Customer Retention Analysis: Identify churn risks and propose retention strategies.
+- Advanced Segmentation: Introduce clustering for more granular customer insights.
